@@ -10,6 +10,17 @@ public class Person {
     private String forename;
     private String mail;
     private List<Person> firends = new ArrayList<Person>();
+    private List<Home> homes = new ArrayList<Home>();
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="FK_PERSON_ID", referencedColumnName = "PERSON_ID")
+    public List<Home> getHomes() {
+        return homes;
+    }
+
+    public void setHomes(List<Home> homes) {
+        this.homes = homes;
+    }
 
     @Id
     @Column(name="PERSON_ID")

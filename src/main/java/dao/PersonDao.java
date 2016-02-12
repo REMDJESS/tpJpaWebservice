@@ -16,28 +16,46 @@ public class PersonDao implements IDao<Person> {
     }
 
     public void create(Person entity) {
-        et.begin();
-        em.persist(entity);
-        et.commit();
-        //em.clear();
+        if(entity != null);
+        {
+            et.begin();
+            em.persist(entity);
+            et.commit();
+            //em.clear();
+        }
     }
 
-    public void delete(Object entity_id) {
-        et.begin();
-        em.remove(this.find(entity_id));
-        et.commit();
-        //em.clear();
+    public void delete(Person entity)
+    {
+        Person p;
+        if(entity != null)
+        {
+            p = this.find(entity);
+            if(p != null)
+            {
+                et.begin();
+                em.remove(p);
+                et.commit();
+                //em.clear();
+            }
+        }
     }
 
-    public Person find(Object entity_id) {
-        return em.find(Person.class, ((Integer)entity_id).longValue());
+    public Person find(Person entity) {
+        Person p = null;
+        if(entity != null)
+            p = (Person)(em.find(Person.class, Long.valueOf(entity.getId().toString())));
+        return p;
     }
 
     public void update(Person entity) {
-        et.begin();
-        em.merge(entity);
-        et.commit();
-        //em.clear();
+        if(entity != null)
+        {
+            et.begin();
+            em.merge(entity);
+            et.commit();
+            //em.clear();
+        }
     }
 
     public Collection<Person> findAll() {
