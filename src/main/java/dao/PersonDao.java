@@ -25,34 +25,28 @@ public class PersonDao implements IDao<Person> {
         }
     }
 
-    public void delete(Person entity)
+    public void delete(Object id)
     {
-        Person p;
-        if(entity != null)
-        {
-            p = this.find(entity);
-            if(p != null)
-            {
-                et.begin();
-                em.remove(p);
-                et.commit();
-                //em.clear();
-            }
-        }
+                Person p = em.getReference(Person.class, id);
+                if(p != null)
+                {
+                    et.begin();
+                    em.remove(p);
+                    et.commit();
+                    //em.clear();
+                }
     }
 
-    public Person find(Person entity) {
-        Person p = null;
-        if(entity != null)
-            p = (Person)(em.find(Person.class, Long.valueOf(entity.getId().toString())));
-        return p;
+    public Person find(Object id) {  
+        return (Person)(em.find(Person.class, id));
     }
 
     public void update(Person entity) {
-        if(entity != null)
+        Person p = em.getReference(Person.class, entity.getId());
+        if(p != null)
         {
             et.begin();
-            em.merge(entity);
+            em.flush();
             et.commit();
             //em.clear();
         }
@@ -65,4 +59,21 @@ public class PersonDao implements IDao<Person> {
         CriteriaQuery<Person> q = query.select(pers);
 	return em.createQuery(q).getResultList();
     }
+    
+    public List<Person> findBySurname(String surname)
+    {
+        Query q = em.createNamedQuery("person.find.by.surname");
+        q.setParameter(1, surname);
+        List<Person> result = q.getResultList();
+        return result;
+    }
+    
+    public void deleteAll()
+    {
+        et.begin();
+        Query q = em.createNamedQuery("person.remove.all");
+        q.executeUpdate();
+        et.commit();
+    }
+   
 }
