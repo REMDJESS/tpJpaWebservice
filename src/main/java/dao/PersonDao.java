@@ -58,13 +58,4 @@ public class PersonDao implements IDao<Person> {
         CriteriaQuery<Person> q = query.select(pers);
 	return em.createQuery(q).getResultList();
     }
-    
-    public List<Person> findBySurname(String surname)
-    {
-        Query q = em.createNamedQuery("person.find.by.surname");
-        q.setParameter(1, surname);
-        List<Person> result = q.getResultList();
-        return result;
-    }
-   
 }
