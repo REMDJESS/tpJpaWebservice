@@ -4,7 +4,6 @@ import domain.Home;
 import java.util.Collection;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.Query;
 
 public class HomeDao implements IDao<Home> {
     private EntityManager em;
@@ -33,12 +32,4 @@ public class HomeDao implements IDao<Home> {
     public Collection<Home> findAll() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    public void deleteAll() {
-        et.begin();
-        Query q = em.createNamedQuery("home.remove.all");
-        q.executeUpdate();
-        et.commit();
-    }
-    
 }
