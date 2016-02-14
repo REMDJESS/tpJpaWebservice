@@ -1,13 +1,16 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package domain;
 
-/**
- *
- * @author AURELIA
- */
-public class ElectronicDevice {
+import javax.persistence.*;
+
+@Entity
+@DiscriminatorValue("electronicDevice")
+public class ElectronicDevice extends SmartDevice {
     
+    public ElectronicDevice(){
+        super();
+    }
+    
+    public ElectronicDevice(String power){
+        super(power);
+    }
 }

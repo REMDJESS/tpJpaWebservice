@@ -6,9 +6,9 @@ import javax.persistence.*;
 @Entity
 @NamedQueries
 ({
-  @NamedQuery(name="person.remove.all", query="DELETE FROM Person p"),
-  @NamedQuery(name="person.find.by.surname", query="SELECT p FROM Person p WHERE p.surname = :surname"),
-  @NamedQuery(name="person.delete.by.id", query="UPDATE Person p")
+  @NamedQuery(name="person.find.by.id", query="SELECT p FROM Person p WHERE p.id = :person_id"),
+  @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.firends WHERE p.id = :person_id"),
+  @NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
 })
 public class Person {
     private Long id;
@@ -26,8 +26,6 @@ public class Person {
     }
 
     public void setHomes(List<Home> homes) {
-        //this.homes.clear();
-        //this.homes.addAll(homes);
         this.homes = homes;
     }
 
@@ -73,18 +71,19 @@ public class Person {
     }
 
     public void setFirends(List<Person> friends) {
-        //this.firends.clear();
-        //this.firends.addAll(friends);
         this.firends = friends;
     }
     
-    public Person(){
-        
+    public Person(){ 
     }
     
     public Person(String surname, String forename, String mail){
         this.surname = surname;
         this.forename = forename;
         this.mail = mail;
+    }
+    
+    public String toString(){
+        return (this.getSurname()+" "+this.getForename()+" "+this.getMail());  
     }
 }

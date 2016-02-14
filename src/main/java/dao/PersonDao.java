@@ -42,11 +42,10 @@ public class PersonDao implements IDao<Person> {
     }
 
     public void update(Person entity) {
-        Person p = em.getReference(Person.class, entity.getId());
-        if(p != null)
+        if(entity != null)
         {
             et.begin();
-            em.flush();
+            em.merge(entity);
             et.commit();
             //em.clear();
         }
@@ -66,14 +65,6 @@ public class PersonDao implements IDao<Person> {
         q.setParameter(1, surname);
         List<Person> result = q.getResultList();
         return result;
-    }
-    
-    public void deleteAll()
-    {
-        et.begin();
-        Query q = em.createNamedQuery("person.remove.all");
-        q.executeUpdate();
-        et.commit();
     }
    
 }

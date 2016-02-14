@@ -1,4 +1,3 @@
-
 package domain;
 
 import javax.persistence.*;
@@ -6,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_DEVICE")
-@DiscriminatorValue("super")
+@DiscriminatorValue("smartDevice")
 public class SmartDevice {
     private String power;
     private long id;

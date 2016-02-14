@@ -8,5 +8,4 @@ public interface IDao<T> {
     T find(Object id);
     void update(T entity);
     Collection<T> findAll();
-    void deleteAll();
 }
