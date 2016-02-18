@@ -7,7 +7,7 @@ import javax.persistence.*;
 @NamedQueries
 ({
   @NamedQuery(name="person.find.by.id", query="SELECT p FROM Person p WHERE p.id = :person_id"),
-  @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.firends WHERE p.id = :person_id"),
+  @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.friends WHERE p.id = :person_id"),
   @NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
 })
 public class Person {
@@ -16,7 +16,7 @@ public class Person {
     private String forename;
     private String mail;
     
-    private List<Person> firends = new ArrayList<Person>();
+    private List<Person> friends = new ArrayList<Person>();
     private List<Home> homes = new ArrayList<Home>();
 
     @OneToMany(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
@@ -64,14 +64,19 @@ public class Person {
         this.mail = mail;
     }
     
-    @OneToMany(cascade = {CascadeType.PERSIST})
-    @JoinColumn(name="FK_PERSON_ID", referencedColumnName = "PERSON_ID")
-    public List<Person> getFirends() {
-        return firends;
+    public void setFriends(List<Person> friends) {
+        this.friends = friends;
     }
-
-    public void setFirends(List<Person> friends) {
-        this.firends = friends;
+    
+    @ManyToMany(cascade = {CascadeType.PERSIST})
+    @JoinTable
+            (
+            name="FRIENDS",
+            joinColumns = {@JoinColumn(name="PERSON_SOURCE", referencedColumnName = "PERSON_ID")},
+            inverseJoinColumns = {@JoinColumn(name="PERSON_TARGET", referencedColumnName="PERSON_ID")}
+            )
+    public List<Person> getFriends() {
+        return friends;
     }
     
     public Person(){ 

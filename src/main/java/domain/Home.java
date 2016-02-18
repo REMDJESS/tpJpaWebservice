@@ -67,4 +67,7 @@ public class Home {
         this.name = name;
     }
     
+    public String toString(){
+        return this.name+" "+this.area+" "+this.numberOfPiece;
+    } 
 }

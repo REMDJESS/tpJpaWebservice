@@ -1,7 +1,9 @@
 package servlet;
 
-import java.io.IOException;
-import java.io.PrintWriter;
+import dao.*;
+import domain.*;
+import java.io.*;
+import java.util.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,38 +14,53 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "userinfo", urlPatterns = {"/UserInfo"})
 public class UserInfo extends HttpServlet {
 
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        PrintWriter out = response.getWriter();
-        try {
-	out.println("<HTML>\n<BODY>\n" +
-				"<H1>Recapitulatif des informations</H1>\n" +
-				"<UL>\n" +			
-		" <LI>Nom: "
-				+ request.getParameter("name") + "\n" +
-				" <LI>Prenom: "
-				+ request.getParameter("firstname") + "\n" +
-				" <LI>Age: "
-				+ request.getParameter("mail") + "\n" +
-				"</UL>\n" +				
-		"</BODY></HTML>");
-
-        } finally {            
-            out.close();
+    @Override
+    public void destroy() {
+        try{
+            
+        }catch(Exception ex){
+            ex.printStackTrace();
+        }finally{
+            singleton.EntityManager.close();              
         }
+    }
+
+    @Override
+    public void init(){
+       try{
+           singleton.EntityManager.getInstance();
+       }catch(Exception ex){
+           ex.printStackTrace();
+       }
     }
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        List<Person> persons = getListPerson();
+        request.setAttribute("listPerson", persons);
+        this.getServletContext().getRequestDispatcher("/listperson.jsp").forward(request, response);
     }
-
+    
+    public void createPerson(HttpServletRequest request, HttpServletResponse response)
+    {
+        String name = request.getParameter("name");
+        String firstname = request.getParameter("firstname");
+        String mail = request.getParameter("mail");
+        PersonDao dao = new PersonDao();
+        dao.create(new Person(name, firstname, mail));
+    }
+    
+    public List<Person> getListPerson(){
+        PersonDao dao = new PersonDao();
+        return (List<Person>)dao.findAll();
+    } 
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+        createPerson(request, response);
+        response.sendRedirect("/");
     }
 
     @Override

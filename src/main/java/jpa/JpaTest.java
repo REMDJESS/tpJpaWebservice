@@ -30,7 +30,7 @@ public class JpaTest {
             friends.add(friend1);
             friends.add(friend2);
             
-            pers.setFirends(friends);
+            pers.setFriends(friends);
             
             List<Home> homes = new ArrayList<Home>();
             Home home = new Home("12m²", 4, "villa koudou");
