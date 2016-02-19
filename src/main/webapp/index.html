@@ -2,7 +2,7 @@
     <title>add person</title>
     <body>
         <div>
-            <form  method="POST" action="/UserInfo">
+            <form  method="POST" action="/UserInfo" id="addPerson">
                 <label for="name">Nom</label>
                 <input type="text" id="name"
                        name="name" value="" size="20" />
@@ -18,9 +18,20 @@
                        name="mail" value="" size="20" />
                 <br />
                 <br />
-                <input type="submit" value="create person"  />
-                <a href="/UserInfo">list person</a> <br/>
+                <input type="submit" value="create person--Servlet"  />
+                <button onclick="addPerson()">create person--WebService</button> <br/>
+                <a href="/UserInfo">list person--Servlet</a><br>
+                <a href="/listperson.html">list person--webService</a>
             </form>
         </div>
+        <script type="text/javascript">
+                    function addPerson()
+                    {
+                        var xhr = new XMLHttpRequest();
+                        xhr.open('POST', 'rest/person/add');
+                        var form = document.getElementById('addPerson');
+                        xhr.send(new FormData(form));
+                    }
+        </script>
     </body>
 </html>

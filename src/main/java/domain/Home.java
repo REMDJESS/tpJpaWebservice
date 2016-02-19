@@ -2,9 +2,10 @@ package domain;
 
 import javax.persistence.*;
 import java.util.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
-
+@XmlRootElement
 public class Home {
     private long id;
     private String name;
