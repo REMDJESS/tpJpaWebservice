@@ -2,33 +2,34 @@
 
 ## objectifs
 
-*Comprendre les mécanismes des servlets
-*Réaliser une application web en combinant JPA et les Servlets
-*Comprendre les principes d'une architecture Rest
-*Comprendre les bénéfices d'un framework come Jersey
+* Comprendre les mÃ©canismes des servlets
+* RÃ©aliser une application web en combinant JPA et les Servlets
+* Comprendre les principes d'une architecture Rest
+* Comprendre les bÃ©nÃ©fices d'un framework come Jersey
 
 ## Sujet
-l'objectif est de continuer le développement d'une application type réseau social
-permettant de comparer sa consommation électrique avec ses amis, ses voisins,...
-dans la lignée de Opower.
-OPower est une société américaine qui est fondée sur un principe de base déjà 
-porteur : grâce à son logiciel, il permet aux consommateurs de maîtriser leur 
-consommation d’énergie. En effet, il travaille conjointement avec des fournisseurs 
-de services publics (électricité, gaz, téléphone, etc.) pour promouvoir 
-l'efficacité énergétique. Mais lorsqu’il se met à surfer sur la vague Facebook, 
-Opower fait de l’économie d’énergie un jeu… qui pourrait séduire ses clients !
-Opower a créé une application (liée à Facebook) qui permet de suivre sa 
-consommation électrique dans le cadre d’un réseau social. 
-Ainsi les consommateurs peuvent comparer leur consommation d’électricité 
-poweravec celle de ses voisins sur le réseau social… De l’économie d’énergie ludique !
+l'objectif est de continuer le dÃ©veloppement d'une application type rÃ©seau social
+permettant de comparer sa consommation Ã©lectrique avec ses amis, ses voisins,...
+dans la lignÃ©e de Opower.
+OPower est une sociÃ©tÃ© amÃ©ricaine qui est fondÃ©e sur un principe de base dÃ©jÃ  
+porteur : grÃ¢ce Ã  son logiciel, il permet aux consommateurs de maÃ®triser leur 
+consommation dâ€™Ã©nergie. En effet, il travaille conjointement avec des fournisseurs 
+de services publics (Ã©lectricitÃ©, gaz, tÃ©lÃ©phone, etc.) pour promouvoir 
+l'efficacitÃ© Ã©nergÃ©tique. Mais lorsquâ€™il se met Ã  surfer sur la vague Facebook, 
+Opower fait de lâ€™Ã©conomie dâ€™Ã©nergie un jeuâ€¦ qui pourrait sÃ©duire ses clients !
+Opower a crÃ©Ã© une application (liÃ©e Ã  Facebook) qui permet de suivre sa 
+consommation Ã©lectrique dans le cadre dâ€™un rÃ©seau social. 
+Ainsi les consommateurs peuvent comparer leur consommation dâ€™Ã©lectricitÃ© 
+poweravec celle de ses voisins sur le rÃ©seau socialâ€¦ De lâ€™Ã©conomie dâ€™Ã©nergie ludique !
 
-## Démarrage de la base de données
-A la racine de ce depôt, se trouve ce script de démarrage de la base de données
+## DÃ©marrage de la base de donnÃ©es
+A la racine de ce depÃ´t, se trouve ce script de dÃ©marrage de la base de donnÃ©es
 [run-hsqldb-server.sh](https://github.com/adjagossan/tpJpaWebservice/blob/master/run-hsqldb-server.sh)
-et ce script de démarrage du manager [show-hsqldb.sh].(https://github.com/adjagossan/tpJpaWebservice/blob/master/show-hsqldb.sh)
-Lancez le système de base de données, puis le Manager et connectez vous à la base
-de données (login: **sa** et **pas de mot de passe**, Url de connexion:**jdbc:hsqldb:hsql://localhost/**
-Le fichier de données se trouve dans le répertoire **data**, il est possible de 
-supprimer son contenu si l'on souhaite réinitialiser complètement la base de données.
-Le diagramme de classe à ce jour se présente comme suit:
+et ce script de dÃ©marrage du manager
+[show-hsqldb.sh](https://github.com/adjagossan/tpJpaWebservice/blob/master/show-hsqldb.sh)
+Lancez le systÃ¨me de base de donnÃ©es, puis le Manager et connectez vous Ã  la base
+de donnÃ©es (login: **sa** et **pas de mot de passe**, Url de connexion:**jdbc:hsqldb:hsql://localhost/**
+Le fichier de donnÃ©es se trouve dans le rÃ©pertoire **data**, il est possible de 
+supprimer son contenu si l'on souhaite rÃ©initialiser complÃ¨tement la base de donnÃ©es.
+Le diagramme de classe Ã  ce jour se prÃ©sente comme suit:
 ![alt text](https://github.com/adjagossan/tpJpaWebservice/blob/master/img/diagram-class.PNG "")
