@@ -28,8 +28,9 @@
                     function addPerson()
                     {
                         var xhr = new XMLHttpRequest();
-                        xhr.open('POST', 'rest/person/add');
+                        xhr.open('POST', 'rest/person');
                         var form = document.getElementById('addPerson');
+                        alert(form);
                         xhr.send(new FormData(form));
                     }
         </script>

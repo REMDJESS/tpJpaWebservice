@@ -2,10 +2,10 @@
 
 ## objectifs
 
-*Comprendre les mécanismes des servlets
-*Réaliser une application web en combinant JPA et les Servlets
-*Comprendre les principes d'une architecture Rest
-*Comprendre les bénéfices d'un framework come Jersey
+* Comprendre les mécanismes des servlets
+* Réaliser une application web en combinant JPA et les Servlets
+* Comprendre les principes d'une architecture Rest
+* Comprendre les bénéfices d'un framework come Jersey
 
 ## Sujet
 l'objectif est de continuer le développement d'une application type réseau social
@@ -25,10 +25,11 @@ poweravec celle de ses voisins sur le réseau social… De l’économie d’énergie lud
 ## Démarrage de la base de données
 A la racine de ce depôt, se trouve ce script de démarrage de la base de données
 [run-hsqldb-server.sh](https://github.com/adjagossan/tpJpaWebservice/blob/master/run-hsqldb-server.sh)
-et ce script de démarrage du manager [show-hsqldb.sh].(https://github.com/adjagossan/tpJpaWebservice/blob/master/show-hsqldb.sh)
+et ce script de démarrage du manager [show-hsqldb.sh](https://github.com/adjagossan/tpJpaWebservice/blob/master/show-hsqldb.sh)
 Lancez le système de base de données, puis le Manager et connectez vous à la base
 de données (login: **sa** et **pas de mot de passe**, Url de connexion:**jdbc:hsqldb:hsql://localhost/**
 Le fichier de données se trouve dans le répertoire **data**, il est possible de 
 supprimer son contenu si l'on souhaite réinitialiser complètement la base de données.
 Le diagramme de classe à ce jour se présente comme suit:
+:
 ![alt text](https://github.com/adjagossan/tpJpaWebservice/blob/master/img/diagram-class.PNG "")

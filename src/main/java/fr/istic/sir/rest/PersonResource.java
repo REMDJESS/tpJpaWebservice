@@ -19,22 +19,22 @@ public class PersonResource {
     }
     
     @POST
-    @Path("/add")
-    @Consumes("application/x-www-form-urlencoded")
-    public Person addPerson(@FormParam("name") String name, 
+    //@Consumes("application/x-www-form-urlencoded")
+    @Consumes({MediaType.APPLICATION_JSON})
+    /*public Person addPerson(@FormParam("name") String name, 
     @FormParam("firstname") String firstname, 
-    @FormParam("mail") String mail)
+    @FormParam("mail") String mail)*/
+     public Person addPerson(Person pers)
     {
         PersonDao dao = new PersonDao();
-        Person pers = new Person(name, firstname, mail);
+        //Person pers = new Person(name, firstname, mail);
         dao.create(pers);
         return pers;
     }
     
     @GET
-    @Path("/all")
     @Produces({MediaType.APPLICATION_JSON})
-    public Collection<Person> listPerson(){
+    public /*String*/Collection<Person> listPerson(){
         PersonDao dao = new PersonDao();
         return dao.findAll();
     }

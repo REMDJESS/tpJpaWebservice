@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
   @NamedQuery(name="person.find.friens.all", query="SELECT p FROM Person p join p.friends WHERE p.id = :person_id"),
   @NamedQuery(name="person.find.home.all", query="SELECT p FROM Person p join p.homes WHERE p.id = :person_id")
 })
-@XmlRootElement
+@XmlRootElement(name="persons")
 public class Person {
     private Long id;
     private String surname;
