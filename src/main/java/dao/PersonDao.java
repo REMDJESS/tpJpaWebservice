@@ -25,7 +25,7 @@ public class PersonDao implements IDao<Person> {
         }
     }
 
-    public void delete(Object id)
+    public Person delete(Object id)
     {
                 Person p = em.getReference(Person.class, id);
                 if(p != null)
@@ -35,6 +35,7 @@ public class PersonDao implements IDao<Person> {
                     et.commit();
                     //em.clear();
                 }
+                return p;
     }
 
     public Person find(Object id) {  

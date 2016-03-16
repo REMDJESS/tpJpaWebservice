@@ -4,6 +4,7 @@ import dao.*;
 import domain.*;
 import java.util.*;
 import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
@@ -52,6 +53,15 @@ public class PersonResource {
         person.setSurname(pers.getSurname());
         person.setMail(pers.getMail());
         return dao.update(pers);
+    }
+    
+    @DELETE
+    @Path("/{personId}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Person deletePerson(@PathParam("personId") String personId/*, Person pers*/) {
+        PersonDao dao = new PersonDao();
+        return dao.delete(Long.parseLong(personId));
     }
 
 }
