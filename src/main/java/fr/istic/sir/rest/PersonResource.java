@@ -4,10 +4,11 @@ import dao.*;
 import domain.*;
 import java.util.*;
 import javax.ws.rs.Consumes;
-import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
+import javax.ws.rs.PUT;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
@@ -38,4 +39,19 @@ public class PersonResource {
         PersonDao dao = new PersonDao();
         return dao.findAll();
     }
+    
+    @PUT
+    @Path("/{personId}")
+    @Consumes({MediaType.APPLICATION_JSON})
+    @Produces({MediaType.APPLICATION_JSON})
+    public Person updatePerson(@PathParam("personId") String personId, Person pers)
+    {
+        PersonDao dao = new PersonDao();
+        Person person = dao.find(Long.parseLong(personId));
+        person.setForename(pers.getForename());
+        person.setSurname(pers.getSurname());
+        person.setMail(pers.getMail());
+        return dao.update(pers);
+    }
+
 }

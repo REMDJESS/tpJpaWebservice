@@ -25,7 +25,7 @@ public class HomeDao implements IDao<Home> {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-    public void update(Home entity) {
+    public Home update(Home entity) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

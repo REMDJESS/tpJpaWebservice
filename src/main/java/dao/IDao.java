@@ -6,6 +6,6 @@ public interface IDao<T> {
     void create(T entity);
     void delete(Object id);
     T find(Object id);
-    void update(T entity);
+    T update(T entity);
     Collection<T> findAll();
 }

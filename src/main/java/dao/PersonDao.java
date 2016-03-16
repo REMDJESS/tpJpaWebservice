@@ -41,7 +41,7 @@ public class PersonDao implements IDao<Person> {
         return (Person)(em.find(Person.class, id));
     }
 
-    public void update(Person entity) {
+    public Person update(Person entity) {
         if(entity != null)
         {
             et.begin();
@@ -49,6 +49,7 @@ public class PersonDao implements IDao<Person> {
             et.commit();
             //em.clear();
         }
+        return entity;
     }
 
     public Collection<Person> findAll() {
