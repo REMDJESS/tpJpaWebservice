@@ -1,3 +1,4 @@
+
 package dao;
 
 import domain.*;
@@ -6,15 +7,16 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
-public class HomeDao implements IDao<Home> {
+public class SmartDeviceDao implements IDao<SmartDevice> {
     private EntityManager em;
     private EntityTransaction et;
-
-    public HomeDao(){
+    
+    public SmartDeviceDao(){
         em = singleton.EntityManager.getInstance();
         et = em.getTransaction();
     }
-    public void create(Home entity){
+    
+    public void create(SmartDevice entity) {
         if(entity != null){
             et.begin();
             em.persist(entity);
@@ -22,33 +24,34 @@ public class HomeDao implements IDao<Home> {
         }
     }
 
-    public Home delete(Object id) {
-        Home h = em.getReference(Home.class, id);
-        if(h != null)
+    public SmartDevice delete(Object id) {
+        SmartDevice sd = em.getReference(SmartDevice.class, id);
+        if(sd != null)
         {
             et.begin();
-            em.remove(h);
+            em.remove(sd);
             et.commit();
             //em.clear();
         }
-        return h;
+        return sd;
     }
 
-    public Home find(Object id){
-        return (Home)(em.find(Home.class, id));    
-    }
+    public SmartDevice find(Object id) {
+        return (SmartDevice)(em.find(SmartDevice.class, id));     }
 
-    public Home update(Home entity) {
+    public SmartDevice update(SmartDevice entity) {
         if(entity != null)
         {
             et.begin();
             em.merge(entity);
             et.commit();
         }
-        return entity;    }
+        return entity;
+    }
 
-    public Collection<Home> findAll() {
-        TypedQuery<Home> TQ = em.createNamedQuery("home.find.all", Home.class);
+    public Collection<SmartDevice> findAll(){
+        TypedQuery<SmartDevice> TQ = em.createNamedQuery("device.find.all", SmartDevice.class);
         return TQ.getResultList();
     }
+    
 }

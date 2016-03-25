@@ -3,6 +3,9 @@ package domain;
 import javax.persistence.*;
 
 @Entity
+@NamedQueries(
+@NamedQuery(name="device.find.all", query="select sd from SmartDevice sd")
+)
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_DEVICE")
 @DiscriminatorValue("smartDevice")

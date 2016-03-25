@@ -5,6 +5,9 @@ import java.util.*;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@NamedQueries(
+@NamedQuery(name="home.find.all", query="select h from Home h")
+)
 @XmlRootElement
 public class Home {
     private long id;
