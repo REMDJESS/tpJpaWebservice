@@ -24,16 +24,16 @@ public class JpaTest {
             
             Person pers = new Person("koudou", "yves", "ky@gmail.com");
             
-            //List<Person> friends = new ArrayList<Person>();
+            List<Person> friends = new ArrayList<Person>();
             Person friend1 = new Person("yao","kouassi","yk@gmail.com");
             Person friend2 = new Person("zago","bagnon","zb@gmail.com");
-            pers.setFriends(friend1);
-            pers.setFriends(friend2);
+            //pers.setFriends(friend1);
+            //pers.setFriends(friend2);
             
-            //friends.add(friend1);
-            //friends.add(friend2);
+            friends.add(friend1);
+            friends.add(friend2);
             
-            //pers.setFriends(friends);
+            pers.setFriends(friends);
             
             List<Home> homes = new ArrayList<Home>();
             Home home = new Home("12m²", 4, "villa koudou");

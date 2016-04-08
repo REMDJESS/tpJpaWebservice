@@ -65,12 +65,12 @@ public class Person {
     public void setMail(String mail) {
         this.mail = mail;
     }
-    /*public void setFriends(List<Person> friends) {
+    public void setFriends(List<Person> friends) {
         this.friends = friends;
-    }*/
-    public void setFriends(Person friend) {
-        this.friends.add(friend);
     }
+   /* public void setFriends(Person friend) {
+        this.friends.add(friend);
+    }*/
     
     @ManyToMany(cascade = {CascadeType.PERSIST})
     @JoinTable

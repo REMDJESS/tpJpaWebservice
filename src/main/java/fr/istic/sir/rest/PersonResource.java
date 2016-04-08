@@ -30,6 +30,7 @@ public class PersonResource {
     {
         PersonDao dao = new PersonDao();
         //Person pers = new Person(name, firstname, mail);
+        System.out.println(pers.toString());
         dao.create(pers);
         return pers;
     }
