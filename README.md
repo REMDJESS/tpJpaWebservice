@@ -28,3 +28,6 @@ URL: `jdbc:hsqldb:hsql://localhost/`
 
 ##### Demarrage de l'application
 `mvn tomcat7:run`
+
+##### Diagramme de classes
+![Alt text](https://github.com/adjagossan/tpJpaWebservice/blob/master/img/diagram-class.PNG)
