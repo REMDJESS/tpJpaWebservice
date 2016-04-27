@@ -9,7 +9,7 @@ import javax.persistence.*;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="TYPE_DEVICE")
 @DiscriminatorValue("smartDevice")
-public class SmartDevice {
+public abstract class SmartDevice {
     private String power;
     private long id;
 
